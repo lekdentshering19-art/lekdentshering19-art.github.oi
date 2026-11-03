@@ -2,325 +2,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sherubtse College Inventory</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-* {
-  box-sizing: border-box;
-}
+  <title>Sherubtse College Inventory Management</title>
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f1f5f9;
-  color: #1e293b;
-}
-
-header {
-  background: #123456;
-  color: white;
-  padding: 25px;
-  text-align: center;
-}
-
-header h1 {
-  margin: 0 0 8px;
-}
-
-nav {
-  background: #1e4261;
-  padding: 12px;
-  text-align: center;
-}
-
-nav button {
-  background: transparent;
-  border: 0;
-  color: white;
-  padding: 10px 15px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-nav button:hover {
-  background: #315d7e;
-  border-radius: 5px;
-}
-
-.container {
-  max-width: 1100px;
-  margin: 25px auto;
-  padding: 15px;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
-}
-
-.card {
-  background: white;
-  padding: 22px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px #00000010;
-}
-
-.card h3 {
-  color: #64748b;
-  font-size: 14px;
-}
-
-.card p {
-  font-size: 28px;
-  font-weight: bold;
-  margin: 10px 0;
-}
-
-.lab-buttons {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-  margin: 25px 0;
-}
-
-.lab-buttons button {
-  padding: 22px;
-  border: none;
-  border-radius: 8px;
-  background: #ffffff;
-  font-size: 16px;
-  cursor: pointer;
-  text-align: left;
-  box-shadow: 0 2px 8px #00000010;
-}
-
-.lab-buttons button:hover {
-  background: #dbeafe;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: white;
-  margin-top: 15px;
-}
-
-th, td {
-  padding: 13px;
-  border-bottom: 1px solid #e2e8f0;
-  text-align: left;
-}
-
-th {
-  background: #e2e8f0;
-}
-
-input {
-  padding: 12px;
-  width: 100%;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
-  margin-top: 15px;
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
-  color: #64748b;
-}
-
-@media(max-width: 700px) {
-  .cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .lab-buttons {
-    grid-template-columns: 1fr;
-  }
-
-  table {
-    font-size: 12px;
-  }
-}
-</style>
+  <!-- Connect CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
-  <h1>SHERUBTSE COLLEGE</h1>
-  <p>Laboratory Inventory Management System</p>
-</header>
-
-<nav>
-  <button onclick="showHome()">Home</button>
-  <button onclick="showLab('Chemistry')">Chemistry</button>
-  <button onclick="showLab('Physics')">Physics</button>
-  <button onclick="showLab('Life Science')">Life Science</button>
-  <button onclick="showLab('CIF')">CIF</button>
-</nav>
-
-<div class="container" id="content">
-
-  <h2>Inventory Dashboard</h2>
-  <p>Welcome to Sherubtse College Laboratory Inventory.</p>
-
-  <div class="cards">
-    <div class="card">
-      <h3>Total Laboratories</h3>
-      <p>4</p>
+  <header class="top-header">
+    <div>
+      <h1>SHERUBTSE COLLEGE</h1>
+      <p>Laboratory Inventory Management System</p>
     </div>
+    <span class="system-label">INVENTORY SYSTEM</span>
+  </header>
 
-    <div class="card">
-      <h3>Total Items</h3>
-      <p id="totalItems">4</p>
-    </div>
+  <div class="layout">
 
-    <div class="card">
-      <h3>Available Items</h3>
-      <p id="availableItems">4</p>
-    </div>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h3>MAIN MENU</h3>
 
-    <div class="card">
-      <h3>Low Stock Items</h3>
-      <p id="lowStock">0</p>
-    </div>
+      <button onclick="showDashboard()">Dashboard</button>
+
+      <h3>LABORATORIES</h3>
+
+      <button onclick="showLab('Chemistry')">
+        Chemistry Laboratory
+      </button>
+
+      <button onclick="showLab('Physics')">
+        Physics Laboratory
+      </button>
+
+      <button onclick="showLab('Life Science')">
+        Life Science Laboratory
+      </button>
+
+      <button onclick="showLab('CIF')">
+        Central Instrumental Facilities
+      </button>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main-content" id="content">
+
+      <h2>Inventory Dashboard</h2>
+      <p>Welcome to Sherubtse College Laboratory Inventory System.</p>
+
+      <section class="statistics">
+
+        <div class="stat-card">
+          <h4>Total Laboratories</h4>
+          <p>4</p>
+        </div>
+
+        <div class="stat-card">
+          <h4>Total Inventory Items</h4>
+          <p id="totalItems">0</p>
+        </div>
+
+        <div class="stat-card">
+          <h4>Available Items</h4>
+          <p id="availableItems">0</p>
+        </div>
+
+        <div class="stat-card">
+          <h4>Low Stock Items</h4>
+          <p id="lowStock">0</p>
+        </div>
+
+      </section>
+
+      <h2>Select Laboratory</h2>
+
+      <section class="laboratory-grid">
+
+        <button class="lab-card chemistry"
+          onclick="showLab('Chemistry')">
+          <span>🧪</span>
+          <h3>Chemistry Laboratory</h3>
+          <p>Manage chemicals and equipment</p>
+        </button>
+
+        <button class="lab-card physics"
+          onclick="showLab('Physics')">
+          <span>⚛️</span>
+          <h3>Physics Laboratory</h3>
+          <p>Manage physics apparatus</p>
+        </button>
+
+        <button class="lab-card life"
+          onclick="showLab('Life Science')">
+          <span>🌱</span>
+          <h3>Life Science Laboratory</h3>
+          <p>Manage specimens and equipment</p>
+        </button>
+
+        <button class="lab-card cif"
+          onclick="showLab('CIF')">
+          <span>🔬</span>
+          <h3>Central Instrumental Facilities</h3>
+          <p>Manage analytical instruments</p>
+        </button>
+
+      </section>
+
+    </main>
   </div>
 
-  <h2>Select Your Laboratory</h2>
+  <footer>
+    Sherubtse College | Laboratory Inventory Management System
+  </footer>
 
-  <div class="lab-buttons">
-    <button onclick="showLab('Chemistry')">
-      🧪 Chemistry Laboratory
-    </button>
-
-    <button onclick="showLab('Physics')">
-      ⚛️ Physics Laboratory
-    </button>
-
-    <button onclick="showLab('Life Science')">
-      🌱 Life Science Laboratory
-    </button>
-
-    <button onclick="showLab('CIF')">
-      🔬 Central Instrumental Facilities
-    </button>
-  </div>
-
-</div>
-
-<footer>
-  Sherubtse College | Laboratory Inventory Management System
-</footer>
-
-<script>
-
-// Sample inventory records
-const inventory = {
-  "Chemistry": [
-    {name: "Hydrochloric Acid", quantity: 20, location: "Chemical Store"},
-  ],
-  "Physics": [
-    {name: "Digital Multimeter", quantity: 15, location: "Room P01"},
-  ],
-  "Life Science": [
-    {name: "Microscope", quantity: 12, location: "Room L02"},
-  ],
-  "CIF": [
-    {name: "UV-Vis Spectrophotometer", quantity: 2, location: "Instrument Room"},
-  ]
-};
-
-// Calculate dashboard figures
-const allItems = Object.values(inventory).flat();
-
-document.getElementById("totalItems").textContent =
-  allItems.length;
-
-document.getElementById("availableItems").textContent =
-  allItems.filter(item => item.quantity > 0).length;
-
-document.getElementById("lowStock").textContent =
-  allItems.filter(item => item.quantity <= 2).length;
-
-// Display home dashboard
-function showHome() {
-  location.reload();
-}
-
-// Display individual laboratory inventory
-function showLab(lab) {
-
-  const items = inventory[lab];
-
-  let html = `
-    <h2>${lab} Laboratory Inventory</h2>
-
-    <input
-      type="text"
-      id="search"
-      placeholder="Search inventory..."
-      oninput="filterItems()"
-    >
-
-    <table>
-      <thead>
-        <tr>
-          <th>Item Name</th>
-          <th>Quantity</th>
-          <th>Location</th>
-        </tr>
-      </thead>
-      <tbody id="inventoryRows">
-  `;
-
-  items.forEach(item => {
-    html += `
-      <tr>
-        <td>${item.name}</td>
-        <td>${item.quantity}</td>
-        <td>${item.location}</td>
-      </tr>
-    `;
-  });
-
-  html += `
-      </tbody>
-    </table>
-  `;
-
-  document.getElementById("content").innerHTML = html;
-
-  // Remember selected laboratory for searching
-  window.selectedLab = lab;
-}
-
-// Search inventory
-function filterItems() {
-
-  const query = document.getElementById("search")
-    .value.toLowerCase();
-
-  const items = inventory[window.selectedLab];
-
-  const filtered = items.filter(item =>
-    item.name.toLowerCase().includes(query)
-  );
-
-  document.getElementById("inventoryRows").innerHTML =
-    filtered.map(item => `
-      <tr>
-        <td>${item.name}</td>
-        <td>${item.quantity}</td>
-        <td>${item.location}</td>
-      </tr>
-    `).join("");
-}
-
-</script>
+  <!-- Connect JavaScript -->
+  <script src="script.js"></script>
 
 </body>
 </html>
